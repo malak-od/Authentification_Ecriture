@@ -63,7 +63,7 @@ Classe `Dataset` compatible avec PyTorch et SpikingJelly. Elle gère :
 
 1.  Cloner ce dépôt :
     ```bash
-    git clone [https://github.com/Asuraa3/Authentification_Ecriture.git](https://github.com/Asuraa3/Authentification_Ecriture.git)
+    git clone [https://github.com/Asuraa3/Authentification_Ecriture](https://github.com/Asuraa3/Authentification_Ecriture)
     cd Authentification_Ecriture
     ```
 
