@@ -34,13 +34,13 @@ Chaque fichier de données représente un participant. Les trajectoires sont sto
 
 Ce dépôt inclut des outils Python développés pour explorer et valider la qualité des données biométriques.
 
-### 1. Visualisation Globale des Caractères (`scripts/visualize_grid.py`)
+### 1. Visualisation Globale des Caractères (`scripts/generate_visualizations.py`)
 Ce script génère une planche contact (grille) visualisant l'intégralité des 310 caractères écrits par un participant.
 * **Entrée :** Fichiers de données brutes du dossier `data/`.
 * **Sortie :** Image `.png` montrant la forme et la pression (épaisseur du trait) de chaque essai.
 * **Usage :**
     ```bash
-    python scripts/visualize_grid.py
+    python scripts/generate_visualizations.py
     ```
 
 ### 2. Analyse de la Dynamique (`scripts/visualize_dynamics.py`)
@@ -59,25 +59,22 @@ Classe `Dataset` compatible avec PyTorch et SpikingJelly. Elle gère :
 * Le calcul des dérivées (Vitesse/Accélération).
 * La normalisation temporelle pour l'entraînement des SNN.
 
-##  Installation
+##  Installation et Configuration de l'Environnement
+Ce projet a été développé dans un environnement virtuel **Anaconda** pour garantir la gestion des dépendances (notamment pour l'accélération GPU avec CUDA).
+### Pré-requis
+* [Anaconda](https://www.anaconda.com/) ou [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installé sur votre machine.
+* Visual Studio Code (recommandé).
 
-1.  Cloner ce dépôt :
-    ```bash
-    git clone [https://github.com/Asuraa3/Authentification_Ecriture](https://github.com/Asuraa3/Authentification_Ecriture)
-    cd Authentification_Ecriture
-    ```
+### 1. Création de l'environnement virtuel
+Nous utilisons Python 3.10 pour une compatibilité optimale avec SpikingJelly. Ouvrez votre terminal (Anaconda Prompt ou VS Code) et exécutez :
 
-2.  Créer un environnement virtuel (recommandé avec Conda) :
-    ```bash
-    conda create -n pfe_snn python=3.10
-    conda activate pfe_snn
-    ```
+```bash
+# Création de l'environnement nommé 'pfe_snn'
+conda create -n pfe_snn python=3.10
 
-3.  Installer les dépendances :
-    ```bash
-    pip install -r requirements.txt
-    ```
-    *(Assurez-vous d'installer la version de PyTorch adaptée à votre matériel CUDA/CPU).*
+# Activation de l'environnement
+conda activate pfe_snn
+````
 
 ##  Références
 
