@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 # Mettez ici le chemin correct vers votre dossier de données (si différent)
 ROOT_DIR = os.path.join('DigiLeTs', 'data', 'preprocessed', 'complete')
 
-# Choisissez un fichier spécifique à visualiser (copiez le nom d'un fichier de votre dossier)
-PARTICIPANT_FILE = '002-f-22-right_2019-06-05-12-21-29_preprocessed' 
+# Choisissez un fichier spécifique à visualiser 
+PARTICIPANT_FILE = '007-f-24-right_2019-06-19-12-18-49_preprocessed' 
 
 # Index du caractère à analyser (0-9 pour chiffres, 10-35 pour a-z)
 # 10 correspond à la lettre 'a'
