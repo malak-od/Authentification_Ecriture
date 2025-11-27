@@ -69,11 +69,11 @@ Ce projet a été développé dans un environnement virtuel **Anaconda** pour ga
 Nous utilisons Python 3.10 pour une compatibilité optimale avec SpikingJelly. Ouvrez votre terminal (Anaconda Prompt ou VS Code) et exécutez :
 
 ```bash
-# Création de l'environnement nommé 'pfe_snn'
-conda create -n pfe_snn python=3.10
+# Création de l'environnement nommé 'pfe_auth'
+conda create -n pfe_auth python=3.10
 
 # Activation de l'environnement
-conda activate pfe_snn
+conda activate pfe_auth
 ````
 
 ##  Références
