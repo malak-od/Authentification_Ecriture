@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # ================= CONFIGURATION =================
-# On cherche les fichiers à partir de l'endroit où le script est lancé
+
 INPUT_DIR = os.path.join('DigiLeTs', 'data', 'preprocessed', 'complete')
 OUTPUT_DIR = 'visualization'
 
