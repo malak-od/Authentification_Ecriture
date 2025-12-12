@@ -8,8 +8,8 @@ from spikingjelly.activation_based import neuron, functional, surrogate, layer
 # --- CONFIGURATION ---
 BATCH_SIZE = 64
 LEARNING_RATE = 1e-3 #0.001 Taux d'apprentissage
-T = 10  # Nombre de pas de temps (Time Steps)
-EPOCHS = 3
+T = 4  # Nombre de pas de temps (Time Steps) Reduit pour accélérer les tests
+EPOCHS = 2
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 print(f"Utilisation du périphérique : {DEVICE}")
@@ -29,22 +29,29 @@ class CSNN(nn.Module):
         
         # Le réseau : Conv -> LIF -> MaxPool -> Conv -> LIF -> MaxPool -> Flatten -> Linear -> LIF
         self.net = nn.Sequential(     #Empile les couches les unes après les autres
-            layer.Conv2d(1, 128, kernel_size=3, padding=1, bias=False),
-            layer.BatchNorm2d(128),
+            layer.Conv2d(1, 32, kernel_size=3, padding=1, bias=False),
+            layer.BatchNorm2d(32)  ,
             # Neurone LIF avec gradient "ATan" (très stable)
             neuron.LIFNode(surrogate_function=surrogate.ATan()),   #remplace la fonction d'activation classique par une fonction de type LIF (Leaky Integrate-and-Fire) avec une fonction de substitution ATan pour le gradient.
             layer.MaxPool2d(2, 2),  # 14x14
 
-            layer.Conv2d(128, 128, kernel_size=3, padding=1, bias=False),
-            layer.BatchNorm2d(128),
+            layer.Conv2d(32, 64, kernel_size=3, padding=1, bias=False),
+            layer.BatchNorm2d(64),
             neuron.LIFNode(surrogate_function=surrogate.ATan()),
             layer.MaxPool2d(2, 2),  # 7x7
 
+            #layer.Flatten(),
+            #layer.Linear(128 * 7 * 7, 128, bias=False),
+            #neuron.LIFNode(surrogate_function=surrogate.ATan()),
+
+            #Remplacement de Flatten par Global Average Pooling pour réduire le nombre de paramètres
+            layer.AdaptiveAvgPool2d((1, 1)),  # Réduit chaque carte de caractéristiques à une seule valeur
+            # Flatten est maintenant très léger (aplatit 64x1x1 -> vecteur de 64)
             layer.Flatten(),
-            layer.Linear(128 * 7 * 7, 128, bias=False),
-            neuron.LIFNode(surrogate_function=surrogate.ATan()),
             
-            layer.Linear(128, 10, bias=False), # Sortie : 10 classes
+
+            #couche de sortie
+            layer.Linear(64, 10, bias=False), # 64 neurones -> 10 classes
             neuron.LIFNode(surrogate_function=surrogate.ATan())
         )
 
