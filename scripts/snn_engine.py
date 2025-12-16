@@ -86,8 +86,8 @@ def run_kfold_training(dataset, k=5, epochs=30, batch_size=16, lr=0.005, device=
                 output = model(spikes)
                 score = output.mean(0).squeeze(-1)
                 
-                preds = (torch.sigmoid(score) > 0.5).float()
-                correct += (preds == label).sum().item()
+                preds = (torch.sigmoid(score) > 0.5).float()# Application du seuil de 0.5
+                correct += (preds == label).sum().item()    # Comptage des attributions correctes
                 total += label.size(0)
                 functional.reset_net(model)
         
