@@ -11,7 +11,7 @@ from snn_engine import run_kfold_training # <--- L'IMPORT MAGIQUE
 
 # Configuration
 DATA_DIR = r"C:\Users\User\OneDrive\Desktop\PFE\Authentification_Ecriture\data\preprocessed\complete"
-TARGET_ID = '002'
+TARGET_ID = '066'
 
 class DigiLeTsPinDataset(Dataset):
     def __init__(self, root_dir, target_id, length=20):
