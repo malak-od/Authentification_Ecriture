@@ -7,7 +7,7 @@ from spikingjelly.activation_based import neuron, functional, surrogate, layer
 
 # === 1. LE CERVEAU (Modèle SNN) ===
 class AuthSNN(nn.Module):
-    def __init__(self, num_inputs=9):
+    def __init__(self, num_inputs=9, hidden_size=32):
         super().__init__()
         self.net = nn.Sequential(
             layer.Linear(num_inputs, 64),
